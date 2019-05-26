@@ -1,4 +1,4 @@
-package com.jaybe.spring5thymeleafwebapp.repositories;
+package com.jaybe.spring5thymeleafwebapp.repository;
 
 import com.jaybe.spring5thymeleafwebapp.entity.Author;
 import org.springframework.data.repository.CrudRepository;
