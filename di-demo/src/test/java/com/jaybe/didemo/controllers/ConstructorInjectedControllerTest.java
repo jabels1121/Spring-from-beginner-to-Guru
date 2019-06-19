@@ -1,24 +1,23 @@
 package com.jaybe.didemo.controllers;
 
-import com.jaybe.didemo.services.GreetingServiceImpl;
+import com.jaybe.didemo.services.ConstructorGreetingService;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ConstructorInjectedControllerTest {
 
     private ConstructorInjectedController constructorInjectedController;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         constructorInjectedController =
-                new ConstructorInjectedController(new GreetingServiceImpl());
+                new ConstructorInjectedController(new ConstructorGreetingService());
     }
 
     @Test
     public void testSayHello() {
-        assertEquals(GreetingServiceImpl.HELLO_GURUS, constructorInjectedController.sayHello());
+        assertTrue(constructorInjectedController.sayHello().contains("constructor"));
     }
-
 }

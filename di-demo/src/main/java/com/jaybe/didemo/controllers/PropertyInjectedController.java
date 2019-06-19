@@ -1,13 +1,20 @@
 package com.jaybe.didemo.controllers;
 
 
-import com.jaybe.didemo.services.GreetingServiceImpl;
+import com.jaybe.didemo.services.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class PropertyInjectedController {
 
-    public GreetingServiceImpl greetingService;
+    @Autowired
+    @Qualifier("greetingServiceImpl")
+    public GreetingService greetingServiceImpl; // qualifying bean by same property name
 
-    String sayHello() {
-        return greetingService.sayGreeting();
+    // but @Primary annotation has greater priority
+    public String sayHello() {
+        return greetingServiceImpl.sayGreeting();
     }
 }
