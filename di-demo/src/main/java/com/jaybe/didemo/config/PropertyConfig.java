@@ -3,21 +3,12 @@ package com.jaybe.didemo.config;
 import com.jaybe.didemo.examplebeans.FakeDatasource;
 import com.jaybe.didemo.examplebeans.FakeJmsBroker;
 import com.jaybe.didemo.examplebeans.TestBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
 
 @Configuration
-//@PropertySource(value = {"classpath:datasource.properties", "classpath:jms.properties"})
-@PropertySources({
-        @PropertySource("classpath:datasource.properties"),
-        @PropertySource("classpath:jms.properties")
-})
 public class PropertyConfig {
 
     @Value("${jaybe.username}")
@@ -38,13 +29,10 @@ public class PropertyConfig {
     @Value("${jaybe.jms.url}")
     String jmsUrl;
 
-    @Autowired
-    Environment environment;
-
     @Bean
     public FakeDatasource datasource() {
         FakeDatasource fakeDatasource = new FakeDatasource();
-        fakeDatasource.setDbUrl(environment.getProperty("JAVA_HOME"));
+        fakeDatasource.setDbUrl(userName);
         fakeDatasource.setPassword(password);
         fakeDatasource.setUserName(userName);
         return fakeDatasource;
