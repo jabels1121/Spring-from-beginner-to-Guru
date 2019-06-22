@@ -5,6 +5,7 @@ import com.jaybe.didemo.controllers.MyController;
 import com.jaybe.didemo.controllers.PropertyInjectedController;
 import com.jaybe.didemo.controllers.SetterInjectedController;
 import com.jaybe.didemo.examplebeans.FakeDatasource;
+import com.jaybe.didemo.examplebeans.FakeJmsBroker;
 import com.jaybe.didemo.examplebeans.TestBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,9 +19,15 @@ public class DiDemoApplication {
 
         FakeDatasource fakeDatasource = ctx.getBean(FakeDatasource.class);
         TestBean te = ctx.getBean(TestBean.class);
-        System.out.println(fakeDatasource.getPassword());
-        System.out.println(te.getName());
+        //System.out.println(fakeDatasource.getPassword());
+        //System.out.println(te.getName());
+        //System.out.println(te.getDatasource().getUserName());
+        System.out.println(fakeDatasource.getDbUrl());
 
+
+        FakeJmsBroker bean = ctx.getBean(FakeJmsBroker.class);
+
+        System.out.println(bean.getUsername());
     }
 
 }
