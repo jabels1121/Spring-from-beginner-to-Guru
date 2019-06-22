@@ -28,6 +28,8 @@ public class DiDemoApplication {
         FakeJmsBroker bean = ctx.getBean(FakeJmsBroker.class);
 
         System.out.println(bean.getUsername());
+
+        System.out.println(fakeDatasource.getUserName());
     }
 
 }

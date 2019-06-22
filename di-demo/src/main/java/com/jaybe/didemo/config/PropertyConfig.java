@@ -32,7 +32,7 @@ public class PropertyConfig {
     @Bean
     public FakeDatasource datasource() {
         FakeDatasource fakeDatasource = new FakeDatasource();
-        fakeDatasource.setDbUrl(userName);
+        fakeDatasource.setDbUrl(dbUrl);
         fakeDatasource.setPassword(password);
         fakeDatasource.setUserName(userName);
         return fakeDatasource;
